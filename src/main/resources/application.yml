@@ -1,0 +1,38 @@
+spring:
+  # Database Configuration
+  datasource:
+    # Using H2 In-Memory database for local development without external setup
+    url: jdbc:h2:mem:ticketing_db
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  # H2 Console Settings
+  h2:
+    # Enables a web-based UI to manage the H2 database at /h2-console
+    console:
+      enabled: true
+
+  # JPA & Hibernate Settings
+  jpa:
+    # 'update' automatically reflects entity changes to the database schema on startup
+    hibernate:
+      ddl-auto: update
+    # Set to true to verify generated SQL queries in the console for debugging
+    show-sql: true
+    properties:
+      hibernate:
+        # Optimizing for H2 dialect
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+
+logging:
+  level:
+    # Set the root logging level to INFO (standard for all libraries)
+    root: INFO
+    # Set the project package to DEBUG to see detailed application logs
+    io.github.heoinhye: DEBUG
+    # Optional: Set Hibernate SQL logs to DEBUG to see the actual SQL being executed
+    org.hibernate.SQL: DEBUG
+    # Optional: See the actual values (parameters) bound to the SQL queries
+    org.hibernate.orm.jdbc.bind: TRACE
