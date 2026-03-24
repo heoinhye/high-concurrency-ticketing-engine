@@ -25,4 +25,9 @@ public class Ticket {
     public void markAsServed(){
         this.status = TicketStatus.RESERVED;
     }
+
+    // for test
+    public Ticket(TicketStatus status) {
+        this.status = status;
+    }
 }
