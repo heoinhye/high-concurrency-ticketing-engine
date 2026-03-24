@@ -1,4 +1,9 @@
 spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
   # Database Configuration
   datasource:
     # Using H2 In-Memory database for local development without external setup
