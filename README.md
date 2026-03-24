@@ -38,7 +38,25 @@ This project demonstrates how to handle 10,000+ concurrent requests for limited 
 
 ## 📈 Architecture Overview
 
-(Insert a simple architecture diagram here in the future: Client -> API Gateway -> Spring Boot App -> Redis/PostgreSQL)
+```mermaid
+graph LR
+    %% 노드 정의
+    C((Client)) --> AGW[API Gateway]
+    AGW --> App[Spring Boot App]
+    
+    %% 고동시성 레이어 묶기
+    subgraph High_Concurrency_Layer [High Concurrency Layer]
+        App
+        Redis[(Redis / Redisson)]
+    end
+    
+    %% 데이터베이스 연결
+    App --> Redis
+    App --> DB[(PostgreSQL)]
+
+    %% 스타일링
+    style High_Concurrency_Layer fill:#f9f,stroke:#333,stroke-width:2px
+```
 
 ---
 
